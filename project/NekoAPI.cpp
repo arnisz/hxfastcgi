@@ -75,7 +75,9 @@ value fcgiInit(value inSocket)
    if (!sgInit)
    {
       FCGX_Init();
-      sSocket = FCGX_OpenSocket( val_string(inSocket), 5 /* backlog */);
+      const char *socket = val_string(inSocket);
+      if (socket && socket[0])
+         sSocket = FCGX_OpenSocket( val_string(inSocket), 5 /* backlog */);
    }
 
    return val_null;

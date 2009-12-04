@@ -1,0 +1,39 @@
+<xml>
+
+<include name="${HXCPP}/build-tool/BuildCommon.xml"/>
+
+
+<files id="libfcgi">
+  <compilerflag value="-Ifcgi" unless="windows"/>
+  <compilerflag value="-Ifcgi/win_config" if="windows"/>
+  <compilerflag value="-Ifcgi/include"/>
+
+  <file name="fcgi/libfcgi/fcgi_stdio.c"/>
+  <file name="fcgi/libfcgi/fcgio.cpp"/>
+  <file name="fcgi/libfcgi/fcgiapp.c"/>
+  <file name="fcgi/libfcgi/os_unix.c" unless="windows"/>
+  <file name="fcgi/libfcgi/os_win32.c" if="windows"/>
+
+  <file name="NekoAPI.cpp"/>
+</files>
+
+<target id="fastcgi" output="fastcgi" tool="linker" toolid="dll">
+  <ext value=".ndll"/>
+  <outdir name="../ndll/${BINDIR}"/>
+  <lib name="-lpthread" if="linux"/>
+  <files id="libfcgi"/>
+  <flag value="gdi32.lib" if="windows"/>
+  <flag value="opengl32.lib" if="windows"/>
+
+  <flag value="wsock32.lib" if="windows"/>
+  <flag value="Ws2_32.lib" if="windows"/>
+</target>
+
+
+
+<target id="default">
+   <target id="fastcgi"/>
+</target>
+
+
+</xml>

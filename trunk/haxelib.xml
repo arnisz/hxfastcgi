@@ -1,0 +1,5 @@
+<project name="fastcgi" url="http://code.google.com/p/hxfastcgi" license="MIT">
+    <user name="gamehaxe"/>
+    <description>A haxe wrapper for the fastcgi binary library.</description>
+    <version name="0.1">Initial testing release.</version>
+</project>

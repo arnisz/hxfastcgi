@@ -1,0 +1,1 @@
+A fast cgi interface for haxe.  It uses c code from fastcgi.com to provide a robust interface, and a haxe wrapper to allow easy scripting, even on a shared hosting service.
